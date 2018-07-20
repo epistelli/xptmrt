@@ -1,0 +1,30 @@
+#include <WinDef.h>
+
+#pragma comment(linker, "/export:ChooseColorA=comdlg32.ChooseColorA") // XP
+#pragma comment(linker, "/export:ChooseColorW=comdlg32.ChooseColorW") // XP
+#pragma comment(linker, "/export:ChooseFontA=comdlg32.ChooseFontA") // XP
+#pragma comment(linker, "/export:ChooseFontW=comdlg32.ChooseFontW") // XP
+#pragma comment(linker, "/export:CommDlgExtendedError=comdlg32.CommDlgExtendedError") // XP
+#pragma comment(linker, "/export:DllCanUnloadNow=comdlg32.DllCanUnloadNow")
+#pragma comment(linker, "/export:DllGetClassObject=comdlg32.DllGetClassObject")
+#pragma comment(linker, "/export:FindTextA=comdlg32.FindTextA") // XP
+#pragma comment(linker, "/export:FindTextW=comdlg32.FindTextW") // XP
+#pragma comment(linker, "/export:GetFileTitleA=comdlg32.GetFileTitleA") // XP
+#pragma comment(linker, "/export:GetFileTitleW=comdlg32.GetFileTitleW") // XP
+#pragma comment(linker, "/export:GetOpenFileNameA=comdlg32.GetOpenFileNameA") // XP
+#pragma comment(linker, "/export:GetOpenFileNameW=comdlg32.GetOpenFileNameW") // XP
+#pragma comment(linker, "/export:GetSaveFileNameA=comdlg32.GetSaveFileNameA") // XP
+#pragma comment(linker, "/export:GetSaveFileNameW=comdlg32.GetSaveFileNameW") // XP
+#pragma comment(linker, "/export:LoadAlterBitmap=comdlg32.LoadAlterBitmap") // XP
+#pragma comment(linker, "/export:PageSetupDlgA=comdlg32.PageSetupDlgA") // XP
+#pragma comment(linker, "/export:PageSetupDlgW=comdlg32.PageSetupDlgW") // XP
+#pragma comment(linker, "/export:PrintDlgA=comdlg32.PrintDlgA") // XP
+#pragma comment(linker, "/export:PrintDlgExA=comdlg32.PrintDlgExA") // XP
+#pragma comment(linker, "/export:PrintDlgExW=comdlg32.PrintDlgExW") // XP
+#pragma comment(linker, "/export:PrintDlgW=comdlg32.PrintDlgW") // XP
+#pragma comment(linker, "/export:ReplaceTextA=comdlg32.ReplaceTextA") // XP
+#pragma comment(linker, "/export:ReplaceTextW=comdlg32.ReplaceTextW") // XP
+#pragma comment(linker, "/export:Ssync_ANSI_UNICODE_Struct_For_WOW=comdlg32.Ssync_ANSI_UNICODE_Struct_For_WOW") // XP
+#pragma comment(linker, "/export:WantArrows=comdlg32.WantArrows") // XP
+#pragma comment(linker, "/export:dwLBSubclass=comdlg32.dwLBSubclass") // XP
+#pragma comment(linker, "/export:dwOKSubclass=comdlg32.dwOKSubclass") // XP
