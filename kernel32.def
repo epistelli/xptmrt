@@ -1,0 +1,7 @@
+EXPORTS
+    DeleteProcThreadAttributeList
+    GetFinalPathNameByHandleA
+    GetFinalPathNameByHandleW
+    GetTickCount64
+    InitializeProcThreadAttributeList
+    UpdateProcThreadAttribute

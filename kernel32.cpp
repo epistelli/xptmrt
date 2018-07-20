@@ -1,4 +1,3 @@
-#define _X86_
 #include <WinDef.h>
 
 #pragma comment(linker, "/export:AcquireSRWLockExclusive=kernel32.AcquireSRWLockExclusive")
@@ -275,7 +274,14 @@
 #pragma comment(linker, "/export:DeleteFileTransactedA=kernel32.DeleteFileTransactedA")
 #pragma comment(linker, "/export:DeleteFileTransactedW=kernel32.DeleteFileTransactedW")
 #pragma comment(linker, "/export:DeleteFileW=kernel32.DeleteFileW") // XP
-#pragma comment(linker, "/export:DeleteProcThreadAttributeList=kernel32.DeleteProcThreadAttributeList")
+
+void WINAPI impl_DeleteProcThreadAttributeList(struct _PROC_THREAD_ATTRIBUTE_LIST *list);
+extern "C" __declspec(dllexport) 
+void WINAPI DeleteProcThreadAttributeList(struct _PROC_THREAD_ATTRIBUTE_LIST *list)
+{
+    return impl_DeleteProcThreadAttributeList(list);
+}
+
 #pragma comment(linker, "/export:DeleteSynchronizationBarrier=kernel32.DeleteSynchronizationBarrier")
 #pragma comment(linker, "/export:DeleteTimerQueue=kernel32.DeleteTimerQueue") // XP
 #pragma comment(linker, "/export:DeleteTimerQueueEx=kernel32.DeleteTimerQueueEx") // XP
@@ -585,8 +591,21 @@
 #pragma comment(linker, "/export:GetFileSizeEx=kernel32.GetFileSizeEx") // XP
 #pragma comment(linker, "/export:GetFileTime=kernel32.GetFileTime") // XP
 #pragma comment(linker, "/export:GetFileType=kernel32.GetFileType") // XP
-#pragma comment(linker, "/export:GetFinalPathNameByHandleA=kernel32.GetFinalPathNameByHandleA")
-#pragma comment(linker, "/export:GetFinalPathNameByHandleW=kernel32.GetFinalPathNameByHandleW")
+
+DWORD WINAPI impl_GetFinalPathNameByHandleA(HANDLE file, LPSTR path, DWORD charcount, DWORD flags);
+extern "C" __declspec(dllexport) 
+DWORD WINAPI GetFinalPathNameByHandleA(HANDLE file, LPSTR path, DWORD charcount, DWORD flags)
+{
+    return impl_GetFinalPathNameByHandleA(file, path, charcount, flags);
+}
+
+DWORD WINAPI impl_GetFinalPathNameByHandleW(HANDLE file, LPWSTR path, DWORD charcount, DWORD flags);
+extern "C" __declspec(dllexport) 
+DWORD WINAPI GetFinalPathNameByHandleW(HANDLE file, LPWSTR path, DWORD charcount, DWORD flags)
+{
+    return impl_GetFinalPathNameByHandleW(file, path, charcount, flags);
+}
+
 #pragma comment(linker, "/export:GetFirmwareEnvironmentVariableA=kernel32.GetFirmwareEnvironmentVariableA") // XP
 #pragma comment(linker, "/export:GetFirmwareEnvironmentVariableExA=kernel32.GetFirmwareEnvironmentVariableExA")
 #pragma comment(linker, "/export:GetFirmwareEnvironmentVariableExW=kernel32.GetFirmwareEnvironmentVariableExW")
@@ -768,10 +787,10 @@
 #pragma comment(linker, "/export:GetThreadTimes=kernel32.GetThreadTimes") // XP
 #pragma comment(linker, "/export:GetThreadUILanguage=kernel32.GetThreadUILanguage")
 #pragma comment(linker, "/export:GetTickCount=kernel32.GetTickCount") // XP
-#pragma comment(linker, "/export:GetTickCount64=kernel32.GetTickCount64")
 
 ULONGLONG WINAPI impl_GetTickCount64();
-extern "C" __declspec(dllexport) ULONGLONG WINAPI GetTickCount64()
+extern "C" __declspec(dllexport) 
+ULONGLONG WINAPI GetTickCount64()
 {
     return impl_GetTickCount64();
 }
@@ -863,7 +882,14 @@ extern "C" __declspec(dllexport) ULONGLONG WINAPI GetTickCount64()
 #pragma comment(linker, "/export:InitializeCriticalSectionAndSpinCount=kernel32.InitializeCriticalSectionAndSpinCount") // XP
 #pragma comment(linker, "/export:InitializeCriticalSectionEx=kernel32.InitializeCriticalSectionEx")
 #pragma comment(linker, "/export:InitializeEnclave=kernel32.InitializeEnclave")
-#pragma comment(linker, "/export:InitializeProcThreadAttributeList=kernel32.InitializeProcThreadAttributeList")
+
+BOOL WINAPI impl_InitializeProcThreadAttributeList(struct _PROC_THREAD_ATTRIBUTE_LIST *list, DWORD count, DWORD flags, SIZE_T *size);
+extern "C" __declspec(dllexport) 
+BOOL WINAPI InitializeProcThreadAttributeList(struct _PROC_THREAD_ATTRIBUTE_LIST *list, DWORD count, DWORD flags, SIZE_T *size)
+{
+    return impl_InitializeProcThreadAttributeList(list, count, flags, size);
+}
+
 #pragma comment(linker, "/export:InitializeSListHead=kernel32.InitializeSListHead") // XP
 #pragma comment(linker, "/export:InitializeSRWLock=kernel32.InitializeSRWLock")
 #pragma comment(linker, "/export:InitializeSynchronizationBarrier=kernel32.InitializeSynchronizationBarrier")
@@ -1455,7 +1481,18 @@ extern "C" __declspec(dllexport) ULONGLONG WINAPI GetTickCount64()
 #pragma comment(linker, "/export:UnregisterWaitEx=kernel32.UnregisterWaitEx") // XP
 #pragma comment(linker, "/export:UnregisterWaitUntilOOBECompleted=kernel32.UnregisterWaitUntilOOBECompleted")
 #pragma comment(linker, "/export:UpdateCalendarDayOfWeek=kernel32.UpdateCalendarDayOfWeek")
-#pragma comment(linker, "/export:UpdateProcThreadAttribute=kernel32.UpdateProcThreadAttribute")
+
+BOOL WINAPI impl_UpdateProcThreadAttribute(struct _PROC_THREAD_ATTRIBUTE_LIST *list,
+                                           DWORD flags, DWORD_PTR attr, void *value, SIZE_T size,
+                                           void *prev_ret, SIZE_T *size_ret);
+extern "C" __declspec(dllexport) 
+BOOL WINAPI UpdateProcThreadAttribute(struct _PROC_THREAD_ATTRIBUTE_LIST *list,
+                                      DWORD flags, DWORD_PTR attr, void *value, SIZE_T size,
+                                      void *prev_ret, SIZE_T *size_ret)
+{
+    return impl_UpdateProcThreadAttribute(list, flags, attr, value, size, prev_ret, size_ret);
+}
+
 #pragma comment(linker, "/export:UpdateResourceA=kernel32.UpdateResourceA") // XP
 #pragma comment(linker, "/export:UpdateResourceW=kernel32.UpdateResourceW") // XP
 #pragma comment(linker, "/export:VDMConsoleOperation=kernel32.VDMConsoleOperation") // XP
