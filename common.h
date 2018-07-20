@@ -12,8 +12,8 @@
 #define FIXME(...)
 #define WARN(...)
 
-#define strlenW wcslen
-#define strcatW wcscat
-#define strncmpiW _wcsnicmp
+#define strlenW (DWORD) wcslen
+#define strcatW (DWORD) wcscat
+#define strncmpiW (DWORD) _wcsnicmp
 
 #endif // _XPTMRT_COMMON_H

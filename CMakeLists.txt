@@ -2,6 +2,20 @@ cmake_minimum_required(VERSION 2.8)
 
 add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 
+# build statically
+if(CMAKE_BUILD_TYPE STREQUAL "Release")
+    set(COMPFLAGS
+        CMAKE_CXX_FLAGS
+        CMAKE_CXX_FLAGS_RELEASE
+        CMAKE_C_FLAGS
+        CMAKE_C_FLAGS_RELEASE
+        )
+    foreach(COMPFLAG ${COMPFLAGS})
+      string(REPLACE "/MD" "/MT" ${COMPFLAG} "${${COMPFLAG}}")
+    endforeach()
+endif()
+
+
 if (CMAKE_CL_64)
     add_definitions(-D_AMD64_)
     link_directories("${CMAKE_CURRENT_LIST_DIR}/lib/x64")
